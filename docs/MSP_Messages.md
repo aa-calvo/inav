@@ -14,7 +14,7 @@ These MSP messages correspond to INAV 2.6.0
 
 |         Data         |       Data Type      |       Comments       |
 | -------------------- | :------------------: | -------------------- |
-| Identifier           | string               | See table below. Usually 4 characters |
+| Identifier           | string               | See table below. 4 characters |
 
 | Identifier | Description |
 | ---------- | ----------- |
@@ -37,22 +37,116 @@ These MSP messages correspond to INAV 2.6.0
 
 |         Data         |       Data Type      |       Comments       |
 | -------------------- | :------------------: | -------------------- |
-| Identifier           | string               | Usually 4 characters |
-| Version              | UINT 16              |  TODO                |
-| OSD support          | UINT 8               |  TODO                |
-| Comms Capabilities   | UINT 8               |  TODO                |
+| Identifier           | string               | 4 characters         |
+| Version              | UINT 16              | TODO                 |
+| OSD Support          | UINT 8               | TODO                 |
+| Comms Capabilities   | UINT 8               | TODO                 |
+| Name Length          | UINT 8               | Length of Name string |
+| Name                 | string               |                      |
 
 ### 5 - MSP_BUILD_INFO
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Build Date           | string               | 11 characters        |
+| Build Time           | string               | 8 characters         |
+| Short Git Revision   | string               | 7 characters         |
+
 ### 6 - MSP_INAV_PID
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Async Mode                   | UINT 8       |                      |
+| Accelerometer Task Frequency | UINT 16      |                      |
+| Attitude Task Frequency      | UINT 16      |                      |
+| Mag Hold Rate Limit          | UINT 8       |                      |
+| Mag Hold Error LPF Frequency | UINT 8       |                      |
+| Yaw Jump Prevention Limit    | UINT 16      |                      |
+| Gyroscope LPF                | UINT 8       |                      |
+| Accelerometer Soft LPF Hz    | UINT 8       |                      |
+| Reserved                     | 4 x UINT 8   | 4 reserved bytes     |
+
 ### 7 - MSP_SET_INAV_PID
+
+See: [MSP_INAV_PID](###-6---MSP_INAV_PID)
+ 
 ### 10 - MSP_NAME
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Name                 | string               |                      |
+
 ### 11 - MSP_SET_NAME
+
+See: [MSP_NAME](###-10---MSP_NAME)
+
 ### 12 - MSP_NAV_POSHOLD
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| User Control Mode               | UINT 8    |                      |
+| Max Speed                       | UINT 16   |                      |
+| Max Climb Rate                  | UINT 16   |                      |
+| Max Manual Speed                | UINT 16   |                      |
+| Max Manual Climb Rate           | UINT 16   |                      |
+| Max Bank Angle                  | UINT 8    |                      |
+| Use Throttle Middle For Althold | UINT 8    |                      |
+| Hover Throttle                  | UINT 16   |                      |
+
 ### 13 - MSP_SET_NAV_POSHOLD
+
+See: [MSP_NAV_POSHOLD](###-12---MSP_NAV_POSHOLD)
+
 ### 14 - MSP_CALIBRATION_DATA
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Calibrations Flag    | UINT 8 bit field     | see table below      |
+| accelerometer Zero X | UINT 16              |                      |
+| Accelerometer Zero Y | UINT 16              |                      |
+| Accelerometer Zero Z | UINT 16              |                      |
+| Accelerometer Gain X | UINT 16              |                      |
+| Accelerometer Gain Y | UINT 16              |                      |
+| Accelerometer Gain Z | UINT 16              |                      |
+| Magnetometer Zero X  | UINT 16              |                      |
+| Magnetometer Zero Y  | UINT 16              |                      |
+| Magnetometer Zero Z  | UINT 16              |                      |
+| Optical Flow Scale   | UINT 16              | Value divided by 256.0 |
+| Magnetometer Gain X  | UINT 16              |                      |
+| Magnetometer Gain Y  | UINT 16              |                      |
+| Magnetometer Gain Z  | UINT 16              |                      |
+
+|         Data         |       Bit Number     |
+| -------------------- | :------------------: |
+| Accelerometer  Pos0  | 0 -LSB-              |
+| Accelerometer  Pos1  | 1                    |
+| Accelerometer  Pos2  | 2                    |
+| Accelerometer  Pos3  | 3                    |
+| Accelerometer  Pos4  | 4                    |
+| Accelerometer  Pos5  | 5 -MSB-              |
+
 ### 15 - MSP_SET_CALIBRATION_DATA
+
+Same struct as [MSP_CALIBRATION_DATA](###-14---MSP_CALIBRATION_DATA) without Calibration Flag
+
 ### 16 - MSP_POSITION_ESTIMATION_CONFIG
+
+TODO get data names
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| w_z_baro_p           | UINT 16              | Divide by 100        |
+| w_z_gps_p            | UINT 16              | Divide by 100        |
+| w_z_gps_v            | UINT 16              | Divide by 100        |
+| w_xy_gps_p           | UINT 16              | Divide by 100        |
+| w_xy_gps_v           | UINT 16              | Divide by 100        |
+| gps_min_sats         | UINT 8               |                      |
+| use_gps_velned       | bool (UINT 8)        |                      |
+
 ### 17 - MSP_SET_POSITION_ESTIMATION_CONFIG
+
+See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
+
 ### 18 - MSP_WP_MISSION_LOAD
 ### 19 - MSP_WP_MISSION_SAVE
 ### 20 - MSP_WP_GETINFO
