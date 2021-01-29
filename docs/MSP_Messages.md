@@ -111,7 +111,7 @@ See: [MSP_NAV_POSHOLD](###-12---MSP_NAV_POSHOLD)
 | Magnetometer Zero X  | UINT 16              |                      |
 | Magnetometer Zero Y  | UINT 16              |                      |
 | Magnetometer Zero Z  | UINT 16              |                      |
-| Optical Flow Scale   | UINT 16              | |  divided by 256.0 |
+| Optical Flow Scale   | UINT 16              | divided by 256.0     |
 | Magnetometer Gain X  | UINT 16              |                      |
 | Magnetometer Gain Y  | UINT 16              |                      |
 | Magnetometer Gain Z  | UINT 16              |                      |
@@ -222,8 +222,8 @@ Set one mode range at the time.
 | Mode Range Index     | UINT 8               | Id of range          |
 | Box ID               | UINT 8               | Id of iNav mode      |
 | Aux Channel Index    | UINT 8               | RC Channel input     |
-| Start Step           | UINT 8               | Range start. 900 + |  * 25 |
-| End Step             | UINT 8               | Range end. 900 + |  * 25 |
+| Start Step           | UINT 8               | Range start. 900 + * 25 |
+| End Step             | UINT 8               | Range end. 900 +  * 25 |
 
 ### 36 - MSP_FEATURE
 
@@ -249,6 +249,12 @@ See: [MSP_BOARD_ALIGNMENT](###-38---MSP_BOARD_ALIGNMENT)
 ### 40 - MSP_CURRENT_METER_CONFIG
 
 TODO: Not really used?
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| currnet_scale            | UINT 16              |         	         |
+| current_offset           | UINT 16              |         	         |
+| current_type             | UINT 8               |         	         |
+| capacity                 | UINT 16              |         	         |
 
 ### 41 - MSP_SET_CURRENT_METER_CONFIG
 
@@ -289,9 +295,27 @@ TODO: Not really used?
 ### 54 - MSP_CF_SERIAL_CONFIG
 ### 55 - MSP_SET_CF_SERIAL_CONFIG
 ### 56 - MSP_VOLTAGE_METER_CONFIG
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| scale_dV                 | UINT 8               |         	         |
+| cell_min_dV              | UINT 8               |         	         |
+| ell_max_dV               | UINT 8               |         	         |
+| cell_warning_dV          | UINT 8               |         	         |
 ### 57 - MSP_SET_VOLTAGE_METER_CONFIG
 ### 58 - MSP_SONAR_ALTITUDE
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| altitude_cm              | UINT 32              |         	         |
+
 ### 59 - MSP_PID_CONTROLLER
+
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| controller_id            | UINT 8               |         	         |
+
 ### 60 - MSP_SET_PID_CONTROLLER
 ### 61 - MSP_ARMING_CONFIG
 ### 62 - MSP_SET_ARMING_CONFIG
@@ -316,26 +340,129 @@ See: [MSP_SET_BF_CONFIG](###-67---MSP_SET_BF_CONFIG)
 
 ### 68 - MSP_REBOOT
 ### 69 - MSP_BF_BUILD_INFO
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| build_date               | STRING               |         	         |
+| reserved1                | UINT 32              |         	         |
+| reserved2                | UINT 32              |         	         |
+
 ### 70 - MSP_DATAFLASH_SUMMARY
+
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| flash_is_ready           | BOOL                 |         	         |
+| sectors                  | UINT 32              |         	         |
+| total_size               | UINT 32              |         	         |
+| offset                   | UINT 32              |         	         |
+
+
 ### 71 - MSP_DATAFLASH_READ
 ### 72 - MSP_DATAFLASH_ERASE
 ### 73 - MSP_LOOP_TIME
 ### 74 - MSP_SET_LOOP_TIME
 ### 75 - MSP_FAILSAFE_CONFIG
+
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| delay                    | uint8                |         	         |
+| off_delay                | uint8                |         	         |
+| throttle                 | uint16               |         	         |
+| kill_switch              | uint8                |         	         |
+| throttle_low_delay       | uint16               |         	         |
+| procedure                | uint8                |         	         |
+| recovery_delay           | uint8                |         	         |
+| fw_roll_angle            | uint16               |         	         |
+| fw_pitch_angle           | uint16               |         	         |
+| fw_yaw_rate              | uint16               |         	         |
+| stick_motion_threshold   | uint16               |         	         |
+| min_distance             | uint16               |         	         |
+| min_distance_procedure   | uint8                |         	         |
+
+
 ### 76 - MSP_SET_FAILSAFE_CONFIG
 ### 77 - MSP_RXFAIL_CONFIG
 ### 78 - MSP_SET_RXFAIL_CONFIG
 ### 79 - MSP_SDCARD_SUMMARY
+
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| flags                    | uint8                |         	         |
+| state                    | uint8                |         	         |
+| last_error               | uint8                |         	         |
+| free_space_kb            | uint32               |         	         |
+| total_space_kb           | uint32               |         	         |
+
+
 ### 80 - MSP_BLACKBOX_CONFIG
+
+CHECK
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| supported                | uint8                |         	         |
+| blackboxDevice           | uint8                |         	         |
+| blackboxRateNum          | uint8                |         	         |
+| blackboxRateDenom        | uint8                |         	         |
+
+
 ### 81 - MSP_SET_BLACKBOX_CONFIG
+
+
+
 ### 82 - MSP_TRANSPONDER_CONFIG
+
 ### 83 - MSP_SET_TRANSPONDER_CONFIG
+
 ### 84 - MSP_OSD_CONFIG
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| osd_flags                | uint8                |         	         |
+| video_system             | uint8                |         	         |
+| units                    | uint8                |         	         |
+| rssi_alarm               | uint8                |         	         |
+| battery_cap_warn         | uint16               |         	         |
+| time_alarm               | uint16               |         	         |
+| alt_alarm                | uint16               |         	         |
+| dist_alarm               | uint16               |         	         |
+| neg_alt_alarm            | uint16               |         	         |
+| OSD_ITEM_COUNT> item_pos | uint16               |         	         |
+
+
 ### 85 - MSP_SET_OSD_CONFIG
+
+
 ### 86 - MSP_OSD_CHAR_READ
+
+
 ### 87 - MSP_OSD_CHAR_WRITE
+
+
 ### 88 - MSP_VTX_CONFIG
+
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| device_type              | uint8                |         	         |
+| band                     | uint8                |         	         |
+| channel                  | uint8                |         	         |
+| power                    | uint8                |         	         |
+| pitmode                  | uint8                |         	         |
+| low_power_disarm         | uint8                |         	         |
+
 ### 89 - MSP_SET_VTX_CONFIG
+
+
+|         Data             |       Data Type      |       Comments       |
+| --------------------     | :------------------: | -------------------- |
+| frequency                | uint16               |         	         |
+| power                    | uint8                |         	         |
+| pit_mode                 | uint8                |         	         |
+
 ### 90 - MSP_ADVANCED_CONFIG
 ### 91 - MSP_SET_ADVANCED_CONFIG
 ### 92 - MSP_FILTER_CONFIG
@@ -399,12 +526,8 @@ Not used
 ### 125 - MSP_RC_DEADBAND
 ### 126 - MSP_SENSOR_ALIGNMENT
 ### 127 - MSP_LED_STRIP_MODECOLOR
-
 ### 150 - MSP_STATUS_EX
-
 ### 151 - MSP_SENSOR_STATUS
-
-
 ### 160 - MSP_UID
 ### 164 - MSP_GPSSVINFO
 ### 166 - MSP_GPSSTATISTICS
