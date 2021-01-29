@@ -69,7 +69,7 @@ These MSP messages correspond to INAV 2.6.0
 ### 7 - MSP_SET_INAV_PID
 
 See: [MSP_INAV_PID](###-6---MSP_INAV_PID)
- 
+
 ### 10 - MSP_NAME
 
 |         Data         |       Data Type      |       Comments       |
@@ -82,16 +82,16 @@ See: [MSP_NAME](###-10---MSP_NAME)
 
 ### 12 - MSP_NAV_POSHOLD
 
-|         Data         |       Data Type      |       Comments       |
-| -------------------- | :------------------: | -------------------- |
-| User Control Mode               | UINT 8    |                      |
-| Max Speed                       | UINT 16   |                      |
-| Max Climb Rate                  | UINT 16   |                      |
-| Max Manual Speed                | UINT 16   |                      |
-| Max Manual Climb Rate           | UINT 16   |                      |
-| Max Bank Angle                  | UINT 8    |                      |
-| Use Throttle Middle For Althold | UINT 8    |                      |
-| Hover Throttle                  | UINT 16   |                      |
+|         Data                    |       Data Type      |       Comments       |
+| --------------------            | :------------------: | -------------------- |
+| User Control Mode               | UINT 8               |                      |
+| Max Speed                       | UINT 16              |                      |
+| Max Climb Rate                  | UINT 16              |                      |
+| Max Manual Speed                | UINT 16              |                      |
+| Max Manual Climb Rate           | UINT 16              |                      |
+| Max Bank Angle                  | UINT 8               |                      |
+| Use Throttle Middle For Althold | UINT 8               |                      |
+| Hover Throttle                  | UINT 16              |                      |
 
 ### 13 - MSP_SET_NAV_POSHOLD
 
@@ -111,19 +111,19 @@ See: [MSP_NAV_POSHOLD](###-12---MSP_NAV_POSHOLD)
 | Magnetometer Zero X  | UINT 16              |                      |
 | Magnetometer Zero Y  | UINT 16              |                      |
 | Magnetometer Zero Z  | UINT 16              |                      |
-| Optical Flow Scale   | UINT 16              | Value divided by 256.0 |
+| Optical Flow Scale   | UINT 16              | |  divided by 256.0 |
 | Magnetometer Gain X  | UINT 16              |                      |
 | Magnetometer Gain Y  | UINT 16              |                      |
 | Magnetometer Gain Z  | UINT 16              |                      |
 
 |         Data         |       Bit Number     |
 | -------------------- | :------------------: |
-| Accelerometer  Pos0  | 0 -LSB-              |
-| Accelerometer  Pos1  | 1                    |
-| Accelerometer  Pos2  | 2                    |
-| Accelerometer  Pos3  | 3                    |
-| Accelerometer  Pos4  | 4                    |
-| Accelerometer  Pos5  | 5 -MSB-              |
+| Accelerometer  Pos 0 | 0 -LSB-              |
+| Accelerometer  Pos 1 | 1                    |
+| Accelerometer  Pos 2 | 2                    |
+| Accelerometer  Pos 3 | 3                    |
+| Accelerometer  Pos 4 | 4                    |
+| Accelerometer  Pos 5 | 5 -MSB-              |
 
 ### 15 - MSP_SET_CALIBRATION_DATA
 
@@ -135,36 +135,148 @@ TODO get data names
 
 |         Data         |       Data Type      |       Comments       |
 | -------------------- | :------------------: | -------------------- |
-| w_z_baro_p           | UINT 16              | Divide by 100        |
-| w_z_gps_p            | UINT 16              | Divide by 100        |
-| w_z_gps_v            | UINT 16              | Divide by 100        |
-| w_xy_gps_p           | UINT 16              | Divide by 100        |
-| w_xy_gps_v           | UINT 16              | Divide by 100        |
-| gps_min_sats         | UINT 8               |                      |
-| use_gps_velned       | bool (UINT 8)        |                      |
+| Vertical position barometer weight  | UINT 16              | Divide by 100        |
+| Vertical position GPS weight        | UINT 16              | Divide by 100        |
+| Vertical speed GPS weight           | UINT 16              | Divide by 100        |
+| Horizontal position GPS weight      | UINT 16              | Divide by 100        |
+| Horizontal speed GPS weight         | UINT 16              | Divide by 100        |
+| Min. GPS satellites for a valid fix | UINT 8               |                      |
+| use_gps_velned                      | bool                 |                      |
 
 ### 17 - MSP_SET_POSITION_ESTIMATION_CONFIG
 
 See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
 
 ### 18 - MSP_WP_MISSION_LOAD
+
+TODO: Empty data
+
 ### 19 - MSP_WP_MISSION_SAVE
+
+TODO: Empty data
+
 ### 20 - MSP_WP_GETINFO
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Waypoint Capabilities | UINT 8              |                      |
+| Max Waypoints         | UINT 8              |                      |
+| Is Valid Mission      | Bool                |                      |
+| Count Busy Points     | UINT 8              |                      |
+
 ### 21 - MSP_RTH_AND_LAND_CONFIG
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Min RTH Distance           | UINT 16        |                      |
+| RTH Climb First            | UINT 8         |                      |
+| RTH Climb Ignore Emergency | UINT 8         |                      |
+| RTH Tail First             | UINT 8         |                      |
+| RTH Allow Landing          | UINT 8         |                      |
+| RTH Alt Control Mode       | UINT 8         |                      |
+| RTH Abort Threshold        | UINT 16        |                      |
+| RTH Altitude               | UINT 16        |                      |
+| Land Descent Rate          | UINT 16        |                      |
+| Land Slowdown Min Alt      | UINT 16        |                      |
+| Land Slowdown Max Alt      | UINT 16        |                      |
+| Emergency Descent Rate     | UINT 16        |                      |
+
 ### 22 - MSP_SET_RTH_AND_LAND_CONFIG
+
+See: [MSP_SET_RTH_AND_LAND_CONFIG](###-22---MSP_SET_RTH_AND_LAND_CONFIG)
+
 ### 23 - MSP_FW_CONFIG
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Cruise Throttle      | UINT 16              |                      |
+| Min Throttle         | UINT 16              |                      |
+| Max Throttle         | UINT 16              |                      |
+| Max Bank Angle       | UINT 8               |                      |
+| Max Climb Angle      | UINT 8               |                      |
+| Max Dive Angle       | UINT 8               |                      |
+| Pitch To Throttle    | UINT 8               |                      |
+| Loiter Radius        | UINT 16              |                      |
+
 ### 24 - MSP_SET_FW_CONFIG
+
+See: [MSP_FW_CONFIG](###-23---MSP_FW_CONFIG)
+
 ### 34 - MSP_MODE_RANGES
+
+Array of multiple Mode Ranges packed in the format below. A maximum number of 20 modes can be packed in the array.
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Box ID               | UINT 8               | Id of iNav mode      |
+| Aux Channel Index    | UINT 8               | RC Channel input     |
+| Start Step           | UINT 8               | Range start. 900 + |  * 25 |
+| End Step             | UINT 8               | Range end. 900 + |  * 25 |
+
 ### 35 - MSP_SET_MODE_RANGE
+
+Set one mode range at the time.
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Mode Range Index     | UINT 8               | Id of range          |
+| Box ID               | UINT 8               | Id of iNav mode      |
+| Aux Channel Index    | UINT 8               | RC Channel input     |
+| Start Step           | UINT 8               | Range start. 900 + |  * 25 |
+| End Step             | UINT 8               | Range end. 900 + |  * 25 |
+
 ### 36 - MSP_FEATURE
+
+TODO: Not used// Figure out how it works... mask?
+
 ### 37 - MSP_SET_FEATURE
+
+TODO: Not used
+
 ### 38 - MSP_BOARD_ALIGNMENT
+
+TODO: Not used// Figure out how it works... mask?
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Roll                 | UINT 16              |                      |
+| Pitch                | UINT 16              |                      |
+| Yaw                  | UINT 16              |                      |
+
 ### 39 - MSP_SET_BOARD_ALIGNMENT
+
+See: [MSP_BOARD_ALIGNMENT](###-38---MSP_BOARD_ALIGNMENT)
+
 ### 40 - MSP_CURRENT_METER_CONFIG
+
+TODO: Not really used?
+
 ### 41 - MSP_SET_CURRENT_METER_CONFIG
-### 42 - MSP_MIXER
-### 43 - MSP_SET_MIXER
+
+TODO: Not really used?
+
+### 42 - MSP_MIXER //TODO not used
+### 43 - MSP_SET_MIXER // TODO not used
 ### 44 - MSP_RX_CONFIG
+
+|         Data                | Data Type |       Comments       |
+| --------------------------- | :-------: | -------------------- |
+| Serial RX Provider          | UINT 8    |                      |
+| Max Check                   | UINT 16   |                      |
+| Mid Rc                      | UINT 16   |                      |
+| Min Check                   | UINT 16   |                      |
+| Spektrum Sat Bind           | UINT 8    |                      |
+| Rx Min USec                 | UINT 16   |                      |
+| Rx Max USec                 | UINT 16   |                      |
+| RC Interpolation            | UINT 8    | Betaflight only      |
+| RC Interpolation Interval   | UINT 8    | Betaflight only      |
+| Air Mode Activate Threshold | UINT 16   | Betaflight only      |
+| RX SPI Protocol             | UINT 8    |                      |
+| RX SPI Id                   | UINT 32   |                      |
+| RX SPI Channel Count        | UINT 8    |                      |
+| FPV Camera Angle Degrees    | UINT 8    | Betaflight only      |
+| Receiver Type               | UINT 8    | Inav only            |
+
+
 ### 45 - MSP_SET_RX_CONFIG
 ### 46 - MSP_LED_COLORS
 ### 47 - MSP_SET_LED_COLORS
@@ -186,7 +298,22 @@ See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
 ### 64 - MSP_RX_MAP
 ### 65 - MSP_SET_RX_MAP
 ### 66 - MSP_BF_CONFIG
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Mixer Configuration  | UINT 8               |                      |
+| Features             | UINT 32              |                      |
+| Serial Rx Type       | UINT 8               |                      |
+| Board Align Roll     | UINT 16              | -180 - 360           |
+| Board Align Pitch    | UINT 16              | -180 - 360           |
+| Board Align Yaw      | UINT 16              | -180 - 360           |
+| Current Scale        | UINT 16              |                      |
+| Current Offset       | UINT 16              |                      |
+
 ### 67 - MSP_SET_BF_CONFIG
+
+See: [MSP_SET_BF_CONFIG](###-67---MSP_SET_BF_CONFIG)
+
 ### 68 - MSP_REBOOT
 ### 69 - MSP_BF_BUILD_INFO
 ### 70 - MSP_DATAFLASH_SUMMARY
@@ -216,11 +343,37 @@ See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
 ### 94 - MSP_PID_ADVANCED
 ### 95 - MSP_SET_PID_ADVANCED
 ### 96 - MSP_SENSOR_CONFIG
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| Accelerometer        | UINT 8               |                      |
+| Barometer            | UINT 8               |                      |
+| Magnetometer         | UINT 8               |                      |
+| Pitot                | UINT 8               |                      |
+| Rangefinder          | UINT 8               |                      |
+| Optical Flow Sensor  | UINT 8               |                      |
+
 ### 97 - MSP_SET_SENSOR_CONFIG
+
+See: [MSP_SET_SENSOR_CONFIG](###-96---MSP_SENSOR_CONFIG)
+
 ### 98 - MSP_SPECIAL_PARAMETERS
+
+Not used
+
 ### 99 - MSP_SET_SPECIAL_PARAMETERS
+
+Not used
+
 ### 100 - MSP_IDENT
+
+-- Depricated
+
+
 ### 101 - MSP_STATUS
+
+-- Depricated (Still allowed but not recommended)
+
 ### 102 - MSP_RAW_IMU
 ### 103 - MSP_SERVO
 ### 104 - MSP_MOTOR
@@ -246,8 +399,12 @@ See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
 ### 125 - MSP_RC_DEADBAND
 ### 126 - MSP_SENSOR_ALIGNMENT
 ### 127 - MSP_LED_STRIP_MODECOLOR
+
 ### 150 - MSP_STATUS_EX
+
 ### 151 - MSP_SENSOR_STATUS
+
+
 ### 160 - MSP_UID
 ### 164 - MSP_GPSSVINFO
 ### 166 - MSP_GPSSTATISTICS
@@ -292,6 +449,7 @@ See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
 ### 254 - MSP_DEBUG
 ### 255 - MSP_V2_FRAME
 ### 0x1001 - MSP2_COMMON_TZ
+Not found
 ### 0x1002 - MSP2_COMMON_SET_TZ
 ### 0x1003 - MSP2_COMMON_SETTING
 ### 0x1004 - MSP2_COMMON_SET_SETTING
@@ -310,15 +468,110 @@ See: [MSP_POSITION_ESTIMATION_CONFIG](###-16---MSP_POSITION_ESTIMATION_CONFIG)
 ### 0x1F05 - MSP2_SENSOR_BAROMETER
 ### 0x1F06 - MSP2_SENSOR_AIRSPEED
 ### 0x2000 - MSP2_INAV_STATUS
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| cycleTime            | UINT 16              |                      |
+| offset               | UINT 16              |                      |
+| i2cError             | UINT 16              |                      |
+| offset               | UINT 16              |                      |
+| activeSensors        | UINT 16              |                      |
+| offset               | UINT 16              |                      |
+| cpuload              | UINT 16              |                      |
+| offset               | UINT 16              |                      |
+| profile_byte         | UINT 8               |                      |
+| armingFlags          | UINT 32              |                      |
+| offset               | UINT 32              |                      |
+
+| profile = profile_byte & 0x0F
+| battery_profile = (profile_byte & 0xF0) >> 4
+
 ### 0x2001 - MSP2_INAV_OPTICAL_FLOW
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| raw_quality          | UINT 8               |                      |
+| flow_rate_x          | UINT 16              |                      |
+| flow_rate_y          | UINT 16              |                      |
+| body_rate_x          | UINT 16              |                      |
+| body_rate_y          | UINT 16              |                      |
+
 ### 0x2002 - MSP2_INAV_ANALOG
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| battery_voltage      | UINT 8               |                      |
+| mAh_drawn            | UINT 16              |                      |
+| rssi                 | UINT 16              |                      |
+| amperage             | UINT 16              |                      |
+
 ### 0x2003 - MSP2_INAV_MISC
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| mid_rc               | UINT 16              |                      |
+| min_throttle         | UINT 16              |                      |
+| max_throttle         | UINT 16              |                      |
+| min_command          | UINT 16              |                      |
+| failsafe_throttle    | UINT 16              |                      |
+| gps_provider         | UINT 8               |                      |
+| gps_baudrate         | UINT 8               |                      |
+| gps_ubx_sbas         | UINT 8               |                      |
+| rssi_channel         | UINT 8               |                      |
+| mag_declination      | UINT 16              |                      |
+| voltage_scale        | UINT 16              |                      |
+| cell_min             | UINT 16              |                      |
+| cell_max             | UINT 16              |                      |
+| cell_warning         | UINT 16              |                      |
+| capacity             | UINT 32              |                      |
+| capacity_warning     | UINT 32              |                      |
+| capacity_critical    | UINT 32              |                      |
+| capacity_units       | UINT 8               |                      |
+
 ### 0x2004 - MSP2_INAV_SET_MISC
 ### 0x2005 - MSP2_INAV_BATTERY_CONFIG
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+|voltage_scale         | UINT 16              |                      |
+|cell_min              | UINT 16              |                      |
+|cell_max              | UINT 16              |                      |
+|cell_warning          | UINT 16              |                      |
+|current_offset        | UINT 16              |                      |
+|current_scale         | UINT 16              |                      |
+|capacity              | UINT 32              |                      |
+|capacity_warning      | UINT 32              |                      |
+|capacity_critical     | UINT 32              |                      |
+|capacity_units        | UINT 8               |                      |
+
 ### 0x2006 - MSP2_INAV_SET_BATTERY_CONFIG
+
 ### 0x2007 - MSP2_INAV_RATE_PROFILE
+
+|          Data          |       Data Type      |       Comments       |
+| ---------------------- | :------------------: | -------------------- |
+| throttle_rc_mid        | UINT 8               |                      |
+| throttle_rc_expo       | UINT 8               |                      |
+| throttle_dyn_pid       | UINT 8               |                      |
+| throttle_pa_breakpoint | UINT 16              |                      |
+| stabilized_rc_expo     | UINT 8               |                      |
+| stabilized_rc_yaw_expo | UINT 8               |                      |
+| stabilized_rate_r      | UINT 8               |                      |
+| stabilized_rate_p      | UINT 8               |                      |
+| stabilized_rate_y      | UINT 8               |                      |
+| manual_rc_expo         | UINT 8               |                      |
+| manual_rc_yaw_expo     | UINT 8               |                      |
+| manual_rate_r          | UINT 8               |                      |
+| manual_rate_p          | UINT 8               |                      |
+| manual_rate_y          | UINT 8               |                      |
+
 ### 0x2008 - MSP2_INAV_SET_RATE_PROFILE
 ### 0x2009 - MSP2_INAV_AIR_SPEED
+
+|         Data         |       Data Type      |       Comments       |
+| -------------------- | :------------------: | -------------------- |
+| airspeed             | UINT 32              |                      |
+
 ### 0x200A - MSP2_INAV_OUTPUT_MAPPING
 ### 0x200B - MSP2_INAV_MC_BRAKING
 ### 0x200C - MSP2_INAV_SET_MC_BRAKING
